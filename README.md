@@ -1,5 +1,4 @@
-# openCV_with_python
-OpenCV for Image and Video Analysis with Python
+# OpenCV for Image and Video Analysis with Python
 
 Practiced below processes using OpenCV in Python
 
