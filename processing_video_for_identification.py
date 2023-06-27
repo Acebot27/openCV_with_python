@@ -3,6 +3,33 @@ import numpy as np
 
 cap = cv2.VideoCapture(0)
 
+'''
+# color filtering: 
+# color filtering is used to filter out an object based on color
+
+# for this, we need to convert image from BGR to HSV
+# HSV: Hue, Saturation, Value
+# Hue: is the color
+# Saturation: is the amount of color
+# Value: is brightness of color
+
+# in BGR, it is difficult to represent a color but in HSV, it is easy to represent a color
+# in HSV, Hue range is [0, 179], Saturation range is [0, 255] and Value range is [0, 255]
+# in OpenCV, Hue range is [0, 179], Saturation range is [0, 255] and Value range is [0, 255]
+# in Matplotlib, Hue range is [0, 360], Saturation range is [0, 1] and Value range is [0, 1]
+# in OpenCV, we use cv2.cvtColor() method to convert image from BGR to HSV
+# in Matplotlib, we use cv2.COLOR_BGR2HSV and cv2.COLOR_HSV2BGR methods to convert image from BGR to HSV and vice versa
+'''
+
+'''
+Smoothing and Blurring: https://www.youtube.com/watch?v=1FJWXOO1SRI
+Smoothing is used to remove noise from the image
+Blurring is used to smooth an image
+Smoothing and Blurring are same thing
+Smoothing and Blurring are achieved by convolving the image with a low-pass filter kernel
+It actually removes high frequency content (eg: noise, edges) from the image
+'''
+
 while True:
     _, frame = cap.read()
     #############################################################################################
@@ -38,14 +65,17 @@ while True:
     # sigmaColor is the standard deviation in the color space
     # sigmaSpace is the standard deviation in the coordinate space
     #############################################################################################
+    # Morphological Transformations:
 
+    #############################################################################################
+    # display the images
     cv2.imshow('frame', frame)
     cv2.imshow('mask', mask)
     cv2.imshow('res', res)
-    cv2.imshow('smoothed', smoothed)
-    cv2.imshow('bilateral', bilateral)
-    cv2.imshow('blur', blur)
-    cv2.imshow('median', median)
+    cv2.imshow('smoothed', smoothed)        # gives ok result
+    cv2.imshow('bilateral', bilateral)      # gives worst result
+    cv2.imshow('blur', blur)                # gives good result
+    cv2.imshow('median', median)            # gives best result
 
     k = cv2.waitKey(5) & 0xFF
     if k == ord('q'):
